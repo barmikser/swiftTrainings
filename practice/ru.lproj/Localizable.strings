@@ -1,0 +1,18 @@
+/*
+  Localization.strings
+  practice
+
+  Created by Mikhail Barinov on 23.01.2020.
+  Copyright © 2020 Mikhail Barinov. All rights reserved.
+*/
+
+"MANY_MESSAGE" = "Слишком много";
+"FEW_MESSAGE" = "Слишком мало";
+"RIGHT_MESSAGE" = "Верно";
+"EMPTY_FIELD_MESSAGE" = "Введите число";
+"CHECK_MESSAGE" = "Проверить";
+"AGAIN_MESSAGE" = "Заново";
+"CHECKS_COUNT_TITLE_MESSAGE" = "Количество попыток: ";
+"BACK" = "Назад";
+"MIN_VALUE_TITLE_MESSAGE" = "Минимальное значение: ";
+"MAX_VALUE_TITLE_MESSAGE" = "Максимальное значение: ";
