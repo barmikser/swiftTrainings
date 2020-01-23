@@ -35,6 +35,7 @@ class MainScreenVC: UIViewController {
         actionButton.layer.borderWidth = 1.0
         settingsButton.layer.cornerRadius = 10.0
         settingsButton.layer.borderWidth = 1.0
+        settingsButton.setTitle(NSLocalizedString("SETTINGS", comment: ""), for: .normal)
         resetGame()
         userNumberTextField.text = UserDefaults.standard.string(forKey: "USER_VALUE")
         checkAndUpdateUI()

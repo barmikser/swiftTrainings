@@ -13,6 +13,7 @@
 "CHECK_MESSAGE" = "Проверить";
 "AGAIN_MESSAGE" = "Заново";
 "CHECKS_COUNT_TITLE_MESSAGE" = "Количество попыток: ";
+"SETTINGS" = "Настройки";
 "BACK" = "Назад";
 "MIN_VALUE_TITLE_MESSAGE" = "Минимальное значение: ";
 "MAX_VALUE_TITLE_MESSAGE" = "Максимальное значение: ";

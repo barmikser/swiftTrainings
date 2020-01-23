@@ -13,6 +13,7 @@
 "CHECK_MESSAGE" = "Check";
 "AGAIN_MESSAGE" = "Again";
 "CHECKS_COUNT_TITLE_MESSAGE" = "Checks count: ";
+"SETTINGS" = "Settings";
 "BACK" = "Back";
 "MIN_VALUE_TITLE_MESSAGE" = "Min value: ";
 "MAX_VALUE_TITLE_MESSAGE" = "Max value: ";

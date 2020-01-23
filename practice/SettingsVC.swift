@@ -27,9 +27,11 @@ class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backButton.setTitle("BACK", for: .normal)
-        minValueLabel.text = "MIN_VALUE_TITLE_MESSAGE"
-        maxValueLabel.text = "MAX_VALUE_TITLE_MESSAGE"
+        backButton.layer.cornerRadius = 10.0
+        backButton.layer.borderWidth = 1.0
+        backButton.setTitle(NSLocalizedString("BACK", comment: ""), for: .normal)
+        minValueLabel.text = NSLocalizedString("MIN_VALUE_TITLE_MESSAGE", comment: "")
+        maxValueLabel.text = NSLocalizedString("MAX_VALUE_TITLE_MESSAGE", comment: "")
         minValueTextField.text = String(UserDefaults.standard.integer(forKey: "MIN_VALUE"))
         maxValueTextField.text = String(UserDefaults.standard.integer(forKey: "MAX_VALUE"))
     }
