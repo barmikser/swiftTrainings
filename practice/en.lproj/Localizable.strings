@@ -17,3 +17,6 @@
 "BACK" = "Back";
 "MIN_VALUE_TITLE_MESSAGE" = "Min value: ";
 "MAX_VALUE_TITLE_MESSAGE" = "Max value: ";
+"WARNING_TITLE" = "Warning";
+"MIN_VALUE_GREATER_MAX_MESSAGE" = "Max value can't be lesser or equial than min value.";
+"OK" = "OK";

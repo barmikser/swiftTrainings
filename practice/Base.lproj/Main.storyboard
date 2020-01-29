@@ -115,6 +115,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="userNumberChangeEndAction:" destination="qbV-pa-DSX" eventType="editingDidEnd" id="UA2-jK-P2A"/>
                                     <action selector="userNumberChangedAction:" destination="qbV-pa-DSX" eventType="editingChanged" id="Egd-MJ-XdW"/>
                                 </connections>
                             </textField>
@@ -129,6 +130,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="userNumberChangeEndAction:" destination="qbV-pa-DSX" eventType="editingDidEnd" id="7Je-mI-nl1"/>
                                     <action selector="userNumberChangedAction:" destination="qbV-pa-DSX" eventType="editingChanged" id="DOc-CR-TlH"/>
                                 </connections>
                             </textField>

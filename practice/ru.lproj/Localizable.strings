@@ -17,3 +17,6 @@
 "BACK" = "Назад";
 "MIN_VALUE_TITLE_MESSAGE" = "Минимальное значение: ";
 "MAX_VALUE_TITLE_MESSAGE" = "Максимальное значение: ";
+"WARNING_TITLE" = "Внимание";
+"MIN_VALUE_GREATER_MAX_MESSAGE" = "Максимальное значение не может быть меньше либо равно минимальному.";
+"OK" = "ОК";

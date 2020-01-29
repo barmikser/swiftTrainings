@@ -16,19 +16,30 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var maxValueLabel: UILabel!
     @IBOutlet weak var maxValueTextField: UITextField!
     
+    let cornerRadius: CGFloat = 10.0
+    let borderWidth: CGFloat = 1.0
+    
     @IBAction func backButtonAction(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        defaults.set(Int(minValueTextField.text!), forKey: "MIN_VALUE")
-        defaults.set(Int(minValueTextField.text!), forKey: "MIN_VALUE")
-        
-        self.dismiss(animated: true, completion: nil)
+        let minValue = Int(minValueTextField.text!)!
+        let maxValue = Int(maxValueTextField.text!)!
+        if minValue >= maxValue {
+            let alert = UIAlertController(title: NSLocalizedString("WARNING_TITLE", comment: ""), message: NSLocalizedString("MIN_VALUE_GREATER_MAX_MESSAGE", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        } else {
+            let defaults = UserDefaults.standard
+            defaults.set(Int(minValueTextField.text!), forKey: "MIN_VALUE")
+            defaults.set(Int(minValueTextField.text!), forKey: "MIN_VALUE")
+            
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backButton.layer.cornerRadius = 10.0
-        backButton.layer.borderWidth = 1.0
+        backButton.layer.cornerRadius = cornerRadius
+        backButton.layer.borderWidth = borderWidth
         backButton.setTitle(NSLocalizedString("BACK", comment: ""), for: .normal)
         minValueLabel.text = NSLocalizedString("MIN_VALUE_TITLE_MESSAGE", comment: "")
         maxValueLabel.text = NSLocalizedString("MAX_VALUE_TITLE_MESSAGE", comment: "")
@@ -43,17 +54,25 @@ class SettingsVC: UIViewController {
             if let userText = textField.text {
                 let compSepByCharInSet = userText.components(separatedBy: aSet)
                 let numberFiltered = compSepByCharInSet.joined(separator: "")
-                if (numberFiltered != "") {
+                if (!numberFiltered.isEmpty) {
                     textField.text = numberFiltered
-                } else {
-                    switch textField {
-                    case minValueTextField:
-                        textField.text = String(UserDefaults.standard.integer(forKey: "MIN_VALUE"))
-                    case maxValueTextField:
-                        textField.text = String(UserDefaults.standard.integer(forKey: "MAX_VALUE"))
-                    default:
-                        break
-                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func userNumberChangeEndAction(_ sender: Any) {
+        if sender is UITextField {
+            let textField = sender as! UITextField
+            
+            if let userText = textField.text, userText.isEmpty {
+                switch textField {
+                case minValueTextField:
+                    textField.text = String(UserDefaults.standard.integer(forKey: "MIN_VALUE"))
+                case maxValueTextField:
+                    textField.text = String(UserDefaults.standard.integer(forKey: "MAX_VALUE"))
+                default:
+                    break
                 }
             }
         }

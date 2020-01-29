@@ -15,6 +15,10 @@ class MainScreenVC: UIViewController {
     @IBOutlet weak var checksCountLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     
+    let cornerRadius: CGFloat = 10.0
+    let borderWidth: CGFloat = 1.0
+    let defaultMinValue = 0
+    let defaultMaxValue = 100
     var a = 0;
     var b = 0;
     
@@ -25,16 +29,16 @@ class MainScreenVC: UIViewController {
     @IBAction func settingsButtonAction(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "SettingsVC")
-        self.present(controller, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        actionButton.layer.cornerRadius = 10.0
-        actionButton.layer.borderWidth = 1.0
-        settingsButton.layer.cornerRadius = 10.0
-        settingsButton.layer.borderWidth = 1.0
+        actionButton.layer.cornerRadius = cornerRadius
+        actionButton.layer.borderWidth = borderWidth
+        settingsButton.layer.cornerRadius = cornerRadius
+        settingsButton.layer.borderWidth = borderWidth
         settingsButton.setTitle(NSLocalizedString("SETTINGS", comment: ""), for: .normal)
         resetGame()
         userNumberTextField.text = UserDefaults.standard.string(forKey: "USER_VALUE")
@@ -43,9 +47,9 @@ class MainScreenVC: UIViewController {
     
     private func checkAndUpdateUI() {
         if (actionButton.title(for: .normal) == NSLocalizedString("CHECK_MESSAGE", comment: "")) {
-            guard userNumberTextField.text != "" else {
+            guard !(userNumberTextField.text?.isEmpty ?? true) else {
                 checkResultLabel.text = NSLocalizedString("EMPTY_FIELD_MESSAGE", comment: "")
-                checkResultLabel.textColor = UIColor.black
+                checkResultLabel.textColor = .black
                 return
             }
             
@@ -53,17 +57,17 @@ class MainScreenVC: UIViewController {
                 b = userNumber;
             }
             
-            if (a < b) {
+            if a < b {
                 checkResultLabel.text = NSLocalizedString("MANY_MESSAGE", comment: "")
-                checkResultLabel.textColor = UIColor.red
+                checkResultLabel.textColor = .red
                 actionButton.setTitle(NSLocalizedString("CHECK_MESSAGE", comment: ""), for: .normal)
-            } else if (a > b) {
+            } else if a > b {
                 checkResultLabel.text = NSLocalizedString("FEW_MESSAGE", comment: "")
-                checkResultLabel.textColor = UIColor.red
+                checkResultLabel.textColor = .red
                 actionButton.setTitle(NSLocalizedString("CHECK_MESSAGE", comment: ""), for: .normal)
             } else {
                 checkResultLabel.text = NSLocalizedString("RIGHT_MESSAGE", comment: "")
-                checkResultLabel.textColor = UIColor.green
+                checkResultLabel.textColor = .green
                 userNumberTextField.isUserInteractionEnabled = false
                 actionButton.setTitle(NSLocalizedString("AGAIN_MESSAGE", comment: ""), for: .normal)
             }
@@ -79,8 +83,8 @@ class MainScreenVC: UIViewController {
     private func resetGame() {
         let defaults = UserDefaults.standard
         
-        var minValue = 0
-        var maxValue = 100
+        var minValue = defaultMinValue
+        var maxValue = defaultMaxValue
         if UserDefaults.standard.object(forKey: "MIN_VALUE") != nil {
             minValue = defaults.integer(forKey: "MIN_VALUE")
             maxValue = defaults.integer(forKey: "MAX_VALUE")
@@ -92,7 +96,7 @@ class MainScreenVC: UIViewController {
         userNumberTextField.text = ""
         userNumberTextField.isUserInteractionEnabled = true
         checkResultLabel.text = NSLocalizedString("EMPTY_FIELD_MESSAGE", comment: "")
-        checkResultLabel.textColor = UIColor.black
+        checkResultLabel.textColor = .black
         actionButton.setTitle(NSLocalizedString("CHECK_MESSAGE", comment: ""), for: .normal)
         UserDefaults.standard.set(0, forKey: "CHECKS_COUNT")
         checksCountLabel.text = NSLocalizedString("CHECKS_COUNT_TITLE_MESSAGE", comment: "") + String(UserDefaults.standard.string(forKey: "CHECKS_COUNT")!)
